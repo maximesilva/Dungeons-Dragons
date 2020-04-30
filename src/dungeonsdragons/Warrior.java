@@ -6,12 +6,15 @@ public class Warrior{
 	private int powerPoint;
 	private String shield;
 	
+	//----------- CONSTRUCTOR --------------//
 	public Warrior(String name, int healthPoint, int powerPoint, String shield) {
 		this.name = name;
 		this.healthPoint = healthPoint;
 		this.powerPoint = powerPoint;
 		this.shield = shield;
 	}
+	
+	//----------- GETTERS --------------//
 	public String getName() {
 		return name;
 	}
@@ -24,6 +27,8 @@ public class Warrior{
 	public String getShield() {
 		return shield;
 	}
+	
+	//----------- SETTERS --------------//
 	public void setName(String newName) {
 		this.name = newName;
 	}

@@ -82,7 +82,7 @@ public class Game {
 		System.out.println(newName + " possède " + newHealthPoint + " points de vie, " + newPowerPoint
 				+ " de force. Son sort " + newSpellName + " fait " + spellStat.getSpellStat() + " de dégats.");
 
-		newMage.add(stat);
+		newMage.add(stat); //condition si on veut enregistrer
 
 		System.out.println("Voulez-vous modifier votre personnage ? Oui ou non ? ");
 		String answer = sc.nextLine();
@@ -184,7 +184,7 @@ public class Game {
 		System.out.println(newName + " possède " + newHealthPoint + " points de vie, " + newPowerPoint + " de force. "
 				+ newWeaponName + " fait " + weaponStat.getWeaponStat() + " de dégats.");
 
-		newWarrior.add(stat);
+		newWarrior.add(stat); //condition si on veut enregistrer
 
 		System.out.println("Voulez-vous modifier votre personnage ? Oui ou non ? ");
 		String answer = sc.nextLine();

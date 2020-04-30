@@ -6,12 +6,15 @@ public class Mage{
 	private int powerPoint;
 	private String philtre;
 	
+	//----------- CONSTRUCTOR --------------//
 	public Mage(String name, int healthPoint, int powerPoint, String philtre) {
 		this.name = name;
 		this.healthPoint = healthPoint;
 		this.powerPoint = powerPoint;
 		this.philtre = philtre;
 	}
+	
+	//----------- GETTERS --------------//
 	public String getName() {
 		return name;
 	}
@@ -24,6 +27,8 @@ public class Mage{
 	public String getPhiltre() {
 		return philtre;
 	}
+	
+	//----------- SETTERS --------------//
 	public void setName(String newName) {
 		this.name = newName;
 	}
