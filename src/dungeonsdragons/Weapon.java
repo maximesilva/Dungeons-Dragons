@@ -10,19 +10,18 @@ public class Weapon {
 	}
 	
 	//----------- GETTERS --------------//
-	public int getWeaponStat() {
+	public int getStat() {
 		return weaponStat;
 	}
-	public String getWeaponName() {
+	public String getName() {
 		return weaponName;
 	}
 	
 	//----------- SETTERS --------------//
-	public void setWeaponStat(int newWeaponStat) {
-		this.weaponStat = newWeaponStat;
+	public void setStat(int newStat) {
+		this.weaponStat = newStat;
 	}
-	public void setWeaponName(String newWeaponName) {
-		this.weaponName = newWeaponName;
+	public void setName(String newName) {
+		this.weaponName = newName;
 	}
-	
 }

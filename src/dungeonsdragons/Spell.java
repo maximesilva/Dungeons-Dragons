@@ -10,19 +10,22 @@ public class Spell {
 		this.spellName = spellName;
 	}
 	
+	public String toString(){
+		return spellName + " " + spellStat;
+	}
 	//----------- GETTERS --------------//
-	public int getSpellStat() {
+	public int getStat() {
 		return spellStat;
 	}
-	public String getSpellName() {
+	public String getName() {
 		return spellName;
 	}
 	
 	//----------- SETTERS --------------//
-	public void setSpellStat(int newSpellStat) {
-		this.spellStat = newSpellStat;
+	public void setStat(int newStat) {
+		this.spellStat = newStat;
 	}
-	public void setSpellName(String newSpellName) {
-		this.spellName = newSpellName;
+	public void setName(String newName) {
+		this.spellName = newName;
 	}
 }
