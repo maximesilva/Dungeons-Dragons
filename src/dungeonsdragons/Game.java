@@ -62,39 +62,41 @@ public class Game {
 			createMage();
 		}
 	}
+
 	private String askForString(String question) {
 		// ------------- Choice Name ------------//
-				System.out.println(question);
-				String newValue = sc.nextLine();
-				System.out.println("Vous avez choisi : " + newValue);
-				
-				return newValue;
+		System.out.println(question);
+		String newValue = sc.nextLine();
+		System.out.println("Vous avez choisi : " + newValue);
+
+		return newValue;
 	}
+
 	private int askForInt(String question, int statMin, int statMax) {
 		// ------------- Choice Health Point ------------//
-				System.out.println(question);
-				int newValue = sc.nextInt();
-				while (newValue< statMin || newValue > statMax) {
-					System.out.println("Non ! Entre " + statMin + " et " + statMax + " ? ");
-					newValue = sc.nextInt();
-				}
-				sc.nextLine();
-				System.out.println("Vos points de vie sont de " + newValue);
-				
-				return newValue;
+		System.out.println(question);
+		int newValue = sc.nextInt();
+		while (newValue < statMin || newValue > statMax) {
+			System.out.println("Non ! Entre " + statMin + " et " + statMax + " ? ");
+			newValue = sc.nextInt();
+		}
+		sc.nextLine();
+		System.out.println("Vos points de vie sont de " + newValue);
+
+		return newValue;
 	}
-	
+
 	private void createMage() {
-		
+
 		// ------------- Choice Name ------------//
 		String newName = askForString("Veuillez entrer votre nom ?");
-		
+
 		// ------------- Choice Health Point ------------//
 		int newHealthPoint = askForInt("Veuillez saisir vos points de vie entre 3 et 6 ? ", 3, 6);
-		
+
 		// ------------- Choice Strength ------------//
 		int newPowerPoint = askForInt("Veuillez saisir votre force d'attaque entre 8 et 15 ?", 8, 15);
-		
+
 		// ------------- Choice Spell ------------//
 		String newSpellName = askForString("Veuillez saisir le nom de votre sort ?");
 		Spell spellStat = new Spell(newSpellName);
@@ -122,7 +124,7 @@ public class Game {
 		}
 		if (answer.equalsIgnoreCase("oui")) {
 
-			modifyCharacter(stat, 3, 6, 8, 15 );
+			modifyCharacter(stat, 3, 6, 8, 15);
 
 			// ----------------------- Change Spell -----------------------//
 			System.out.println("Veuillez saisir le nouveau nom de votre sort ? ");
@@ -139,38 +141,21 @@ public class Game {
 					+ spellStat.getStat() + " de dégats.");
 
 			// ------------------- SAVE HERO -----------------------//
-			System.out.println("Voulez-vous enregistré votre magicien " + stat.getName() + " ?");
-			answer = sc.nextLine();
-			while (!answer.equalsIgnoreCase("oui") && !answer.equalsIgnoreCase("non")) {
-				System.out.println("OUI OU NON ?!!!!!");
-				answer = sc.nextLine();
-			}
-			if (answer.equalsIgnoreCase("oui")) {
-				newCharacter.add(stat);
-			} else {
-				System.exit(0);
-			}
+			saveCharacter(stat);
 
 		} else if (answer.equalsIgnoreCase("non")) {
-			System.out.println("Voulez-vous enregistré votre magicien " + newName + " ?");
-			answer = sc.nextLine();
-			while (!answer.equalsIgnoreCase("oui") && !answer.equalsIgnoreCase("non")) {
-				System.out.println("OUI OU NON ?!!!!!");
-				answer = sc.nextLine();
-			}
-			if (answer.equalsIgnoreCase("oui")) {
-				newCharacter.add(stat);
-			}
+			saveCharacter(stat);
 		}
 	}
+
 	private void createWarrior() {
 
 		// ------------- Choice Name ------------//
 		String newName = askForString("Veuillez entrer votre nom ?");
-		
+
 		// ------------- Choice Health Point ------------//
 		int newHealthPoint = askForInt("Veuillez saisir vos points de vie entre 3 et 6 ? ", 5, 10);
-		
+
 		// ------------- Choice Strength ------------//
 		int newPowerPoint = askForInt("Veuillez saisir votre force d'attaque entre 8 et 15 ?", 5, 10);
 		// ------------- Choice Weapon ------------//
@@ -184,7 +169,7 @@ public class Game {
 
 		Warrior stat = new Warrior(newName, newHealthPoint, newPowerPoint, newShieldName);
 		stat.setWeapon(weaponStat);
-		
+
 		System.out.println(newName + " possède " + newHealthPoint + " points de vie, " + newPowerPoint + " de force. "
 				+ newWeaponName + " fait " + weaponStat.getStat() + " de dégats.");
 
@@ -222,7 +207,7 @@ public class Game {
 	}
 
 	private void saveCharacter(Character stat) {
-		System.out.println("Voulez-vous enregistré votre guerrier " + stat.getName() + " ?");
+		System.out.println("Voulez-vous enregistré votre nouvel héro " + stat.getName() + " ?");
 		answer = sc.nextLine();
 		while (!answer.equalsIgnoreCase("oui") && !answer.equalsIgnoreCase("non")) {
 			System.out.println("OUI OU NON ?!!!!!");
@@ -231,14 +216,15 @@ public class Game {
 		if (answer.equalsIgnoreCase("oui")) {
 			newCharacter.add(stat);
 			System.out.println("Nouveau personnage enregistré");
+			startGame();
 		} else {
 			startGame();
 		}
 	}
-	
+
 	private void modifyCharacter(Character stat, int hpMin, int hpMax, int ppMin, int ppMax) {
 		// ------------- Change Name ------------//
-		System.out.println("Veuillez saisir votre nom : ");
+		System.out.println("Veuillez saisir votre nouveau nom : ");
 		stat.setName(sc.nextLine());
 		System.out.println("Votre nouveau nom est " + stat.getName());
 
