@@ -1,42 +1,32 @@
 package dungeonsdragons;
 
-public class Warrior{
-	private String name;
-	private int healthPoint;
-	private int powerPoint;
+public class Warrior extends Character{
+	private Weapon weapon;
 	private String shield;
 	
 	//----------- CONSTRUCTOR --------------//
+	public Warrior(String name, int healthPoint, int powerPoint, Weapon weapon, String shield) {
+		super(name, healthPoint, powerPoint);
+		this.weapon = weapon;//instancier dans le construct
+		this.shield = shield;
+	}
 	public Warrior(String name, int healthPoint, int powerPoint, String shield) {
-		this.name = name;
-		this.healthPoint = healthPoint;
-		this.powerPoint = powerPoint;
+		super(name, healthPoint, powerPoint);
 		this.shield = shield;
 	}
 	
+	public String toString() {
+		return "Guerrier : " + this.name + "\nPoints de vie : " + this.healthPoint + "\nArme : "+ this.weapon;
+	}
 	//----------- GETTERS --------------//
-	public String getName() {
-		return name;
-	}
-	public int getHealthPoint() {
-		return healthPoint;
-	}
-	public int getPowerPoint() {
-		return powerPoint;
-	}
+	
 	public String getShield() {
 		return shield;
 	}
 	
 	//----------- SETTERS --------------//
-	public void setName(String newName) {
-		this.name = newName;
-	}
-	public void setHealthPoint(int newHealthPoint) {
-		this.healthPoint = newHealthPoint;
-	}
-	public void setPowerPoint(int newPowerPoint) {
-		this.powerPoint = newPowerPoint;
+	public void setWeapon(Weapon weaponStat) {
+		this.weapon = weaponStat;
 	}
 	public void setShield(String newShield) {
 		this.shield = newShield;

@@ -9,6 +9,9 @@ public class Weapon {
 		this.weaponName = weaponName;
 	}
 	
+	public String toString(){
+		return weaponName + " " + weaponStat + " de dégats.";
+	}
 	//----------- GETTERS --------------//
 	public int getStat() {
 		return weaponStat;

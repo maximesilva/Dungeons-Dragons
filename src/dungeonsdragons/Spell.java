@@ -11,7 +11,7 @@ public class Spell {
 	}
 	
 	public String toString(){
-		return spellName + " " + spellStat;
+		return spellName + "/" + spellStat + " de dégats.";
 	}
 	//----------- GETTERS --------------//
 	public int getStat() {

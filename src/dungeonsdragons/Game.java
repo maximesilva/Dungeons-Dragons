@@ -7,14 +7,12 @@ public class Game {
 
 	// attribut dispo dans toute la class Game
 	private Scanner sc;
-	private ArrayList<Warrior> newWarrior;
-	private ArrayList<Mage> newMage;
+	private ArrayList<Character> newCharacter;
 	private String answer;
 
 	public Game() {
 		this.sc = new Scanner(System.in);
-		this.newWarrior = new ArrayList<Warrior>();
-		this.newMage = new ArrayList<Mage>();
+		this.newCharacter = new ArrayList<Character>();
 	}
 
 	public void startGame() {
@@ -24,11 +22,11 @@ public class Game {
 			System.out.println("Voir les héros sauvegarder ? Oui ou non ?");
 			answer = sc.nextLine();
 
-			if (answer.equalsIgnoreCase("oui") && !newMage.isEmpty()) {
-				for (int i = 0; i < newMage.size(); i++) {
-					System.out.println(newMage.get(i).toString());
+			if (answer.equalsIgnoreCase("oui") && !newCharacter.isEmpty()) {
+				for (int i = 0; i < newCharacter.size(); i++) {
+					System.out.println(newCharacter.get(i).toString());
 				}
-			} else if (answer.equalsIgnoreCase("oui") && newWarrior.isEmpty()) {
+			} else if (answer.equalsIgnoreCase("oui") && newCharacter.isEmpty()) {
 				System.out.println("Vous n'avez pas encore créé de personnage.");
 				createHero();
 			} else if (answer.equalsIgnoreCase("non")) {
@@ -46,10 +44,12 @@ public class Game {
 		// ------------- Choice Specification ------------//
 		System.out.println("Veuillez saisir votre classe : Guerrier ou Magicien ?");
 		String type = sc.nextLine();
+		
+		//recursivité rappelé la methode dans la methode
 		while (!type.equalsIgnoreCase("Guerrier") && !type.equalsIgnoreCase("Magicien")) {
 			System.out.println("Non, vous avez le choix entre : Guerrier ou Magicien ?");
 			type = sc.nextLine();
-
+			//createHero();
 		}
 		System.out.println("Vous avez choisi un " + type);
 		if (type.equalsIgnoreCase("Guerrier")) {
@@ -135,7 +135,7 @@ public class Game {
 			sc.nextLine();
 			System.out.println("Vos nouveaux points de vie sont de " + stat.getHealthPoint());
 
-			// ------------- Change Strength ------------//
+			// ------------------ Change Strength -------------------------//
 			System.out.println("Veuillez saisir votre nouvelle force d'attaque entre 8 et 15 ? ");
 			stat.setPowerPoint(sc.nextInt());
 
@@ -146,12 +146,12 @@ public class Game {
 			sc.nextLine();
 			System.out.println("Votre nouvelle force d'attaque est de " + stat.getPowerPoint());
 
-			// ------------- Change Spell ------------//
+			// ----------------------- Change Spell -----------------------//
 			System.out.println("Veuillez saisir le nouveau nom de votre sort ? ");
 			spellStat.setName(sc.nextLine());
 			System.out.println("Votre nouveau sort : " + spellStat.getName());
 
-			// ------------- Change Philtre ------------//
+			// ----------------------- Change Philtre --------------------------//
 			System.out.println("Veuillez saisir le nouveau nom de votre philtre ? ");
 			stat.setPhiltre(sc.nextLine());
 			System.out.println(stat.getPhiltre() + "vous protègera tout au long de votre aventure");
@@ -168,7 +168,7 @@ public class Game {
 				answer = sc.nextLine();
 			}
 			if (answer.equalsIgnoreCase("oui")) {
-				newMage.add(stat);
+				newCharacter.add(stat);
 			} else {
 				System.exit(0);
 			}
@@ -181,7 +181,7 @@ public class Game {
 				answer = sc.nextLine();
 			}
 			if (answer.equalsIgnoreCase("oui")) {
-				newMage.add(stat);
+				newCharacter.add(stat);
 			}
 		}
 	}
@@ -226,10 +226,9 @@ public class Game {
 		System.out.println(newShieldName + " vous protègera tout au long de votre aventure");
 
 		Warrior stat = new Warrior(newName, newHealthPoint, newPowerPoint, newShieldName);
+		stat.setWeapon(weaponStat);
 		System.out.println(newName + " possède " + newHealthPoint + " points de vie, " + newPowerPoint + " de force. "
 				+ newWeaponName + " fait " + weaponStat.getStat() + " de dégats.");
-
-		newWarrior.add(stat); // condition si on veut enregistrer
 
 		System.out.println("Voulez-vous modifier votre personnage ? Oui ou non ? ");
 		answer = sc.nextLine();
@@ -289,7 +288,7 @@ public class Game {
 				answer = sc.nextLine();
 			}
 			if (answer.equalsIgnoreCase("oui")) {
-				newWarrior.add(stat);
+				newCharacter.add(stat);
 			} else {
 				System.exit(0);
 			}
@@ -302,7 +301,7 @@ public class Game {
 				answer = sc.nextLine();
 			}
 			if (answer.equalsIgnoreCase("oui")) {
-				newWarrior.add(stat);
+				newCharacter.add(stat);
 			} else {
 				System.exit(0);
 			}
