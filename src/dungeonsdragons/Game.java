@@ -17,7 +17,7 @@ public class Game {
 
 	public void startGame() {
 		System.out.println(
-				"(C)réer un personnage\n(M)odifier un personnage\n(S)upprimer un personnage\n(L)ister les personnages\n(Q)uitter\nFaites votre choix ?");
+				"(C)réer un personnage\n(L)ister les personnages\n(Q)uitter\nFaites votre choix ?");
 		answer = sc.nextLine();
 		if (answer.equalsIgnoreCase("C")) {
 			createHero();
@@ -38,6 +38,16 @@ public class Game {
 	private void seeList() {
 		for (int i = 0; i < newCharacter.size(); i++) {
 			System.out.println(newCharacter.get(i).toString());
+		}
+		System.out.println(
+				"(M)odifier un personnage\n(S)upprimer un personnage\n(Q)uitter\nFaites votre choix ?");
+		answer = sc.nextLine();
+		if (answer.equalsIgnoreCase("M")) {
+			
+		}else if (answer.equalsIgnoreCase("S")){
+			
+		}else if (answer.equalsIgnoreCase("Q")) {
+			startGame();
 		}
 	}
 
