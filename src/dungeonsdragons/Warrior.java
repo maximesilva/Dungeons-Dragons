@@ -1,10 +1,25 @@
 package dungeonsdragons;
-
+/**
+ * Description
+ * Warrior enfant de Character qui prend les attributs de celui ci
+ * @author silvamaxime
+ *
+ */
 public class Warrior extends Character{
 	private Weapon weapon;
 	private String shield;
 	
 	//----------- CONSTRUCTOR --------------//
+	/**
+	 * Description
+	 * Warrior instance un nouvel héro de type guerrier
+	 * @see Character
+	 * @param name voir class Character
+	 * @param healthPoint voir class Character
+	 * @param powerPoint voir class Character
+	 * @param weapon instance une arme 
+	 * @param shield nom du bouclier
+	 */
 	public Warrior(String name, int healthPoint, int powerPoint, Weapon weapon, String shield) {
 		super(name, healthPoint, powerPoint);
 		this.weapon = weapon;//instancier dans le construct

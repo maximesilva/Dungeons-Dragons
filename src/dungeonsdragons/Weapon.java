@@ -1,5 +1,10 @@
 package dungeonsdragons;
-
+/**
+ * Description
+ * Instance une arme
+ * @author silvamaxime
+ *
+ */
 public class Weapon {
 	private int weaponStat = 3;
 	private String weaponName;

@@ -1,11 +1,21 @@
 package dungeonsdragons;
-
+/**
+ * Descrpition
+ * Instance un sort
+ * @author silvamaxime
+ *
+ */
 public class Spell {
 	private int spellStat = 5;
 	private String spellName;
 	
 	
 	//----------- CONSTRUCTOR --------------//
+	/**
+	 * Description
+	 * définit le nom du sort
+	 * @param spellName
+	 */
 	Spell (String spellName){
 		this.spellName = spellName;
 	}

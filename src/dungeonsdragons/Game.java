@@ -2,7 +2,13 @@ package dungeonsdragons;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-
+import java.util.InputMismatchException;
+/**
+ * Description
+ * Game instancit une partie
+ * @author silvamaxime
+ *
+ */
 public class Game {
 
 	// attribut dispo dans toute la class Game
@@ -16,8 +22,7 @@ public class Game {
 	}
 
 	public void startGame() {
-		System.out.println(
-				"(C)réer un personnage\n(L)ister les personnages\n(Q)uitter\nFaites votre choix ?");
+		System.out.println("(C)réer un personnage\n(L)ister les personnages\n(Q)uitter\nFaites votre choix ?");
 		answer = sc.nextLine();
 		if (answer.equalsIgnoreCase("C")) {
 			createHero();
@@ -34,23 +39,29 @@ public class Game {
 			System.exit(0);
 		}
 	}
-
+/**
+ * Description
+ * seeList permet d'afficher la liste des personnages enregistré dans la collection ArrayList
+ */
 	private void seeList() {
-		for (int i = 0; i < newCharacter.size(); i++) {
-			System.out.println(newCharacter.get(i).toString());
+		//equivalent for (i= 0; i < newCharacter.size(); i++)
+		for (Character character : newCharacter) {
+			System.out.println(character.toString());
 		}
-		System.out.println(
-				"(M)odifier un personnage\n(S)upprimer un personnage\n(Q)uitter\nFaites votre choix ?");
+		System.out.println("(M)odifier un personnage\n(S)upprimer un personnage\n(Q)uitter\nFaites votre choix ?");
 		answer = sc.nextLine();
 		if (answer.equalsIgnoreCase("M")) {
-			
-		}else if (answer.equalsIgnoreCase("S")){
-			
-		}else if (answer.equalsIgnoreCase("Q")) {
+
+		} else if (answer.equalsIgnoreCase("S")) {
+
+		} else if (answer.equalsIgnoreCase("Q")) {
 			startGame();
 		}
 	}
-
+/**
+ * Description
+ * createHero permet de choisir un hero et de le créer avec les questions correspondantes
+ */
 	private void createHero() {
 		// ------------- Choice Specification ------------//
 		System.out.println("Veuillez saisir votre classe : Guerrier ou Magicien ?");
@@ -72,7 +83,12 @@ public class Game {
 			createMage();
 		}
 	}
-
+/**
+ * Description
+ * <b>askForString</b> gère toutes les questions attendant une chaîne de caractère en réponse
+ * @param question une question sous forme de chaîne de caractère
+ * @return
+ */
 	private String askForString(String question) {
 		// ------------- Choice Name ------------//
 		System.out.println(question);
@@ -81,21 +97,40 @@ public class Game {
 
 		return newValue;
 	}
-
+/**
+ * Description
+ *<b> askForInt</b> gère toutes les questions attendant un entier en réponse
+ * @param question une question sous forme de chaîne de caractère
+ * @param statMin statistique minimum
+ * @param statMax statistique maximum
+ * @return retourne soit la valeur renseigné, soit la même methode pour reposer la question
+ */
 	private int askForInt(String question, int statMin, int statMax) {
 		// ------------- Choice Health Point ------------//
-		System.out.println(question);
-		int newValue = sc.nextInt();
-		while (newValue < statMin || newValue > statMax) {
-			System.out.println("Non ! Entre " + statMin + " et " + statMax + " ? ");
-			newValue = sc.nextInt();
+
+		try {
+			System.out.println(question);
+			int newValue = sc.nextInt();
+			while (newValue < statMin || newValue > statMax) {
+				System.out.println("Non ! Entre " + statMin + " et " + statMax + " ? ");
+				newValue = sc.nextInt();
+			}
+			sc.nextLine();
+			System.out.println("Vos points de vie sont de " + newValue);
+
+			return newValue;	
+
+		} catch (InputMismatchException e) {
+			System.out.println("Vous n'avez le droit qu'à des chiffres");
+			sc.nextLine();
+			//------------------ RECURSIVITY ---------------------//
+			return askForInt(question, statMin, statMax);
 		}
-		sc.nextLine();
-		System.out.println("Vos points de vie sont de " + newValue);
-
-		return newValue;
 	}
-
+/**
+ * Description
+ * createMage permet de créer un Mage avec les questions correspondantes
+ */
 	private void createMage() {
 
 		// ------------- Choice Name ------------//
@@ -157,7 +192,10 @@ public class Game {
 			saveCharacter(stat);
 		}
 	}
-
+/**
+ * Descritpion
+ * createWarrior permet de créer un Guerrier avec les questions correspondantes
+ */
 	private void createWarrior() {
 
 		// ------------- Choice Name ------------//
@@ -215,7 +253,11 @@ public class Game {
 			saveCharacter(stat);
 		}
 	}
-
+/**
+ * Description
+ * saveCharacter permet de sauvegarder dans la collection le héro créé
+ * @param stat est le paramètre correspondant à la bonne instance de héro
+ */
 	private void saveCharacter(Character stat) {
 		System.out.println("Voulez-vous enregistré votre nouvel héro " + stat.getName() + " ?");
 		answer = sc.nextLine();
@@ -231,7 +273,16 @@ public class Game {
 			startGame();
 		}
 	}
-
+/**
+ * Description
+ * modifyCharacter permet de modifier le héro tout juste créé
+ * 
+ * @param stat est le paramètre correspondant à la bonne instance de héro
+ * @param hpMin point de vie minimum correspondant au héro
+ * @param hpMax point de vie maximum correspondant au héro
+ * @param ppMin force d'attaque minimum correspondant au héro
+ * @param ppMax force d'attaque maximum correspondant au héro
+ */
 	private void modifyCharacter(Character stat, int hpMin, int hpMax, int ppMin, int ppMax) {
 		// ------------- Change Name ------------//
 		System.out.println("Veuillez saisir votre nouveau nom : ");

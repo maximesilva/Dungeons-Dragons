@@ -1,10 +1,26 @@
 package dungeonsdragons;
-
+/**
+ * Description
+ * Mage enfant de Character qui prend les attributs de celui ci
+ * @author silvamaxime
+ *
+ */
 public class Mage extends Character{
 	private Spell spell;
 	private String philtre;
 	
 	//----------- CONSTRUCTOR --------------//
+	/**
+	 * Description
+	 * Lors de l'instance d'un héro de type Mage
+	 * @see Character
+	 * @param name voir class Character
+	 * @param healthPoint voir class Character
+	 * @param powerPoint voir class Character
+	 * @param spell instancie un sort
+	 * @param philtre nom du philtre
+	 */
+	
 	public Mage(String name, int healthPoint, int powerPoint, Spell spell, String philtre) {
 		super(name, healthPoint, powerPoint);
 		this.spell = spell; //instancier dans le construct
